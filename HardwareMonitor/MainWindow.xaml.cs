@@ -141,8 +141,10 @@ namespace HardwareMonitor
                 this.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, (Action)delegate ()
                 {
                     DealText(computer);
-                    this.cpus.ItemsSource = cpuList;
+                    cpus.ItemsSource = cpuList;
                     cpus.Items.Refresh();
+                    this.Topmost = true;
+
                 });
             }, this.cpus, 1000, 1000);
         }
