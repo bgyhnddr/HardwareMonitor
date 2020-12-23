@@ -12,8 +12,8 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <TextBlock Text="CPU:   " TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
             <Canvas Height="5" Width="50" VerticalAlignment="Center">
-                <Rectangle Fill="Transparent" Height="5" Stroke="Yellow" Width="50" VerticalAlignment="Center"/>
-                <Rectangle x:Name="cpuTotal" Fill="Yellow" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
+                <Rectangle Fill="Black" Height="5" Stroke="{Binding CPUColor}" Width="50" VerticalAlignment="Center"/>
+                <Rectangle x:Name="cpuTotal" Width="{Binding CPUP}" Fill="{Binding CPUColor}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
             </Canvas>
         </StackPanel>
         <ListBox BorderThickness="0" x:Name="cpus" Background="Transparent" Cursor="None" ScrollViewer.CanContentScroll="False" Focusable="False" Margin="0" >
@@ -32,7 +32,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Canvas Height="15" Width="5" VerticalAlignment="Center">
-                        <Rectangle Fill="Transparent" Height="15" Width="3" VerticalAlignment="Center" Stroke="{Binding color}"  StrokeThickness="1"/>
+                        <Rectangle Fill="Black" Height="15" Width="3" VerticalAlignment="Center" Stroke="{Binding color}"  StrokeThickness="1"/>
                         <Rectangle Fill="{Binding color}" Canvas.Top="{Binding top}" Height="{Binding height}" Width="3" VerticalAlignment="Center" StrokeThickness="0"/>
                     </Canvas>
                 </DataTemplate>

@@ -47,19 +47,34 @@ namespace HardwareMonitor
                 {
                     if (属性.Index == 0)
                     {
-                        cpuTotal.Width = (double)属性.Value;
+                        var process = 属性.Value / 100 * 50;
+                        var 颜色 = "Yellow";
+                        if (process >= 32)
+                        {
+                            颜色 = "Red";
+                        }
+                        else if (process >= 16)
+                        {
+                            颜色 = "YellowGreen";
+                        }
+
+                        this.DataContext = new
+                        {
+                            CPUColor = 颜色,
+                            CPUP = process
+                        };
                     }
                     else
                     {
                         var height = 属性.Value / 100 * 15;
                         var 颜色 = "Yellow";
-                        if (height >= 5)
-                        {
-                            颜色 = "YellowGreen";
-                        }
-                        else if (height >= 10)
+                        if (height >= 10)
                         {
                             颜色 = "Red";
+                        }
+                        else if (height >= 5)
+                        {
+                            颜色 = "YellowGreen";
                         }
                         cpuList.Add(new
                         {
