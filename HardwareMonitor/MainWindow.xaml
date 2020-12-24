@@ -37,10 +37,7 @@
             <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
         </Canvas>
         <TextBlock x:Name="gpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-            <TextBlock Text="Free:   " TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-            <TextBlock x:Name="gpuFree" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-        </StackPanel>
+        <TextBlock x:Name="gpuFree" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
         <Canvas x:Name="GPUM" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
             <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
