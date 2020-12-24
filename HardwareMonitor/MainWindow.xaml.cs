@@ -181,6 +181,8 @@ namespace HardwareMonitor
                 {
                     DealText(computer);
                     cpus.Items.Refresh();
+                    Topmost = true;
+
                 });
             }, this.cpus, 1000, 1000);
         }
