@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardwareMonitor"
         mc:Ignorable="d"
-        AllowsTransparency="True" WindowStyle="None" Background="Black" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" 
         Title="MainWindow" Top="100" Left="0" Height="450" Width="800" 
         Loaded="Window_Loaded" Topmost="True" Closed="Window_Closed" SizeToContent="WidthAndHeight" IsHitTestVisible="False" >
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0">
