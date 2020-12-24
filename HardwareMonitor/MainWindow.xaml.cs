@@ -13,7 +13,6 @@ namespace HardwareMonitor
     public partial class MainWindow : Window
     {
         private List<object> cpuList;
-        private List<object> gpuList;
         private Timer threadTimer;
         private UpdateVisitor updateVisitor = new UpdateVisitor();
         private Computer computer = new Computer();
@@ -27,7 +26,6 @@ namespace HardwareMonitor
         {
 
             cpuList = new List<object>();
-            gpuList = new List<object>();
 
             cpus.ItemsSource = cpuList;
             RunAddThread();
@@ -35,6 +33,7 @@ namespace HardwareMonitor
             computer.Open();
             computer.CPUEnabled = true;
             computer.GPUEnabled = true;
+            DataContext = this;
         }
 
         private void DealCPU(IHardware 硬件)
@@ -58,10 +57,10 @@ namespace HardwareMonitor
                             颜色 = "YellowGreen";
                         }
 
-                        this.DataContext = new
+                        CPUCanvas.DataContext = new
                         {
-                            CPUColor = 颜色,
-                            CPUP = process
+                            color = 颜色,
+                            process,
                         };
                     }
                     else
@@ -96,7 +95,6 @@ namespace HardwareMonitor
 
         private void DealGPU(IHardware 硬件)
         {
-            gpuList.Clear();
             for (var 属性序号 = 0; 属性序号 < 硬件.Sensors.Length; 属性序号++)
             {
                 var 属性 = 硬件.Sensors[属性序号];
@@ -112,6 +110,47 @@ namespace HardwareMonitor
                     if (属性.Index == 1)
                     {
                         gpuFree.Text = $"{属性.Value} MB";
+                    }
+                }
+                else if (属性.SensorType == SensorType.Load)
+                {
+                    if (属性.Index == 0)
+                    {
+                        var process = 属性.Value / 100 * 50;
+                        var 颜色 = "Yellow";
+                        if (process >= 32)
+                        {
+                            颜色 = "Red";
+                        }
+                        else if (process >= 16)
+                        {
+                            颜色 = "YellowGreen";
+                        }
+
+                        GPUCanvas.DataContext = new
+                        {
+                            color = 颜色,
+                            process,
+                        };
+                    }
+                    else if (属性.Index == 4)
+                    {
+                        var process = 属性.Value / 100 * 50;
+                        var 颜色 = "Yellow";
+                        if (process >= 32)
+                        {
+                            颜色 = "Red";
+                        }
+                        else if (process >= 16)
+                        {
+                            颜色 = "YellowGreen";
+                        }
+
+                        GPUM.DataContext = new
+                        {
+                            color = 颜色,
+                            process,
+                        };
                     }
                 }
             }
@@ -141,7 +180,6 @@ namespace HardwareMonitor
                 this.Dispatcher.BeginInvoke(DispatcherPriority.SystemIdle, (Action)delegate ()
                 {
                     DealText(computer);
-                    this.cpus.ItemsSource = cpuList;
                     cpus.Items.Refresh();
                 });
             }, this.cpus, 1000, 1000);
