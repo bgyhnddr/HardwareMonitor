@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent" 
         Title="MainWindow" Top="100" Left="0" Height="450" Width="800" 
-        Loaded="Window_Loaded" Topmost="True" Closed="Window_Closed" SizeToContent="WidthAndHeight" IsHitTestVisible="False" >
+        Loaded="Window_Loaded" Topmost="True" Closed="Window_Closed" SizeToContent="WidthAndHeight" IsHitTestVisible="False" ResizeMode="NoResize" >
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0">
         <TextBlock Text="CPU" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
         <ItemsControl x:Name="cpus"
