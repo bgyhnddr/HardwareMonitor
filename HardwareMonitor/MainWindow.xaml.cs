@@ -18,6 +18,9 @@ namespace HardwareMonitor
         private UpdateVisitor updateVisitor = new UpdateVisitor();
         private Computer computer = new Computer();
 
+        public string CPUColor { get; private set; }
+        public float? CPUP { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +38,7 @@ namespace HardwareMonitor
             computer.Open();
             computer.CPUEnabled = true;
             computer.GPUEnabled = true;
+            DataContext = this;
         }
 
         private void DealCPU(IHardware 硬件)
@@ -57,12 +61,8 @@ namespace HardwareMonitor
                         {
                             颜色 = "YellowGreen";
                         }
-
-                        this.DataContext = new
-                        {
-                            CPUColor = 颜色,
-                            CPUP = process
-                        };
+                        CPUColor = 颜色;
+                        CPUP = process;
                     }
                     else
                     {

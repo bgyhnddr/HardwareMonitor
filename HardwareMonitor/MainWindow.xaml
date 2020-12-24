@@ -38,6 +38,18 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Grid>
+            <ItemsControl x:Name="theTextBoxGroup" 
+                      ItemsSource="{Binding }" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Height="23" Margin="60,20,300,0" 
+                             Text="{Binding Path=Value, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
         <TextBlock x:Name="cpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" />
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5,0,0">
             <TextBlock Text="GPU:   " TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
