@@ -14,8 +14,8 @@ namespace HardwareMonitor
     {
         private List<object> cpuList;
         private Timer threadTimer;
-        private UpdateVisitor updateVisitor = new UpdateVisitor();
-        private Computer computer = new Computer();
+        private readonly UpdateVisitor updateVisitor = new UpdateVisitor();
+        private readonly Computer computer = new Computer();
 
         public MainWindow()
         {
@@ -191,6 +191,11 @@ namespace HardwareMonitor
         {
             computer.Close();
             threadTimer.Dispose();
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

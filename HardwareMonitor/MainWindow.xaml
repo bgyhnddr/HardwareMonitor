@@ -7,40 +7,42 @@
         mc:Ignorable="d"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent" 
         Title="MainWindow" Top="100" Left="0" Height="450" Width="800" 
-        Loaded="Window_Loaded" Topmost="True" Closed="Window_Closed" SizeToContent="WidthAndHeight" IsHitTestVisible="False" ResizeMode="NoResize" >
+        Loaded="Window_Loaded" Topmost="True" Closed="Window_Closed" SizeToContent="WidthAndHeight" ResizeMode="NoResize" >
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0">
-        <TextBlock Text="CPU" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-        <ItemsControl x:Name="cpus"
+        <TextBlock IsHitTestVisible="True" Text="CPU" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+        <StackPanel IsHitTestVisible="False">
+            <ItemsControl x:Name="cpus"
                       ItemsSource="{Binding cpuList}" >
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Canvas Height="15" Width="3" VerticalAlignment="Center" Margin="0,0,2,0">
-                        <Rectangle Fill="White" Height="15" Width="3" VerticalAlignment="Center" Stroke="{Binding color}"  StrokeThickness="0"/>
-                        <Rectangle Fill="{Binding color}" Canvas.Top="{Binding top}" Height="{Binding height}" Width="3" VerticalAlignment="Center" StrokeThickness="0"/>
-                    </Canvas>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <Canvas x:Name="CPUCanvas" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
-            <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
-        </Canvas>
-        <TextBlock x:Name="cpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" />
-        <TextBlock Text="GPU" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" />
-        <Canvas x:Name="GPUCanvas" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
-            <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
-        </Canvas>
-        <TextBlock x:Name="gpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-        <TextBlock x:Name="gpuFree" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
-        <Canvas x:Name="GPUM" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
-            <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
-        </Canvas>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Canvas Height="15" Width="3" VerticalAlignment="Center" Margin="0,0,2,0">
+                            <Rectangle Fill="White" Height="15" Width="3" VerticalAlignment="Center" Stroke="{Binding color}"  StrokeThickness="0"/>
+                            <Rectangle Fill="{Binding color}" Canvas.Top="{Binding top}" Height="{Binding height}" Width="3" VerticalAlignment="Center" StrokeThickness="0"/>
+                        </Canvas>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Canvas x:Name="CPUCanvas" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
+                <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
+            </Canvas>
+            <TextBlock x:Name="cpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" />
+            <TextBlock Text="GPU" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" />
+            <Canvas x:Name="GPUCanvas" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
+                <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
+            </Canvas>
+            <TextBlock x:Name="gpuTem" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
+            <TextBlock x:Name="gpuFree" TextWrapping="Wrap" Foreground="Yellow" VerticalAlignment="Center" FontWeight="Bold" />
+            <Canvas x:Name="GPUM" Height="5" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Rectangle Fill="White" Height="5" Width="50" VerticalAlignment="Center" StrokeThickness="0"/>
+                <Rectangle Width="{Binding process}" Fill="{Binding color}" Height="5" VerticalAlignment="Center" StrokeThickness="0"/>
+            </Canvas>
+        </StackPanel>
     </StackPanel>
 </Window>
